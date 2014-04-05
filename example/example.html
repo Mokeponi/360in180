@@ -1,0 +1,99 @@
+<html>
+<head>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+
+    <link rel="stylesheet" href="main.css" />
+
+    
+    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+</head>
+<body>
+
+    <!--
+    <div id="header" ></div>
+
+    <div id="map-canvas" class="map-canvas" ></div>
+
+    <div id="footer"></div>
+    -->
+    <div id="blogpostdialog">
+        <div id="blogpostwrapper" class="blogpostwrapper">
+        hi.
+        </div>
+    </div>
+
+    <script>
+    
+        var map_container = document.getElementById('map-canvas');
+        var counties = null;
+        var current_towns = null;
+        var old_counties = [];
+        var town_schools = [];
+
+        var lineWeight = 20;
+
+        var events = [];
+
+        //$('#blogpost').show();
+
+        
+        $(document).ready(function() {
+
+            $( "#blogpostdialog" ).dialog();
+            
+            reSize();
+
+            var main = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data © OpenStreetMap contributors',
+                minZoom: 3,
+                maxZoom: 16,
+            });
+
+            var counties = L.layerGroup();
+            var current_towns = L.layerGroup();
+
+            /*
+            window.map = L.map('map-canvas', {
+                center: [20, 0], //[42.6501, -76.3659],
+                zoom: 3,
+                layers: [
+                    main
+                ]
+            });
+
+            L.control.scale({
+                position: 'bottomright',
+                metric: true,
+               imperial: true
+            }).addTo(map);
+            
+            var marker = L.marker([43, -77]).addTo(map);
+            
+            */
+        });
+        
+        $(window).bind( 'resize', reSize() );
+        
+        function reSize() {
+            
+            // called when window gets resized
+            
+            var w = window.innerWidth;
+            var h = window.innerHeight;
+            
+            $('#blogpostdialog').dialog( "option", "width", (w * .90) );
+            $('#blogpostdialog').dialog( "option", "height", (h * .90) );
+           
+        }
+
+    
+    </script>
+
+</body>
+</html>
