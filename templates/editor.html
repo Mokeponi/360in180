@@ -1,15 +1,18 @@
 <%inherit file="master.mak" />
 
+    <link href="/css/roundabout2.css" rel="stylesheet" />
+
     <script src="/js/markdown.sanitizer.js"></script>
     <script src="/js/markdown.editor.js"></script>
 
+    <script src="/js/jquery.roundabout.js"></script>
+
+    <script src="/js/gauth.js"></script>
+    <script src="/js/youtube.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+
     <div class="editorbackground">
         <div class="editortop">
-
-            <div id="availablemediawrapper" class="availablemediawrapper">
-                <div id="picturescontainer" class="picturescontainer"></div>
-                <div id="videoscontainer" class="videoscontainer"></div>
-            </div>
 
             <div id="imagepreview"></div>
 
@@ -28,19 +31,64 @@
 
                 <div id="divpreview" class="tabcontents">
   
-                    <div id="wmd-preview" class="postcontent"></div> 
-    
+                    <div id="previewmediawrapper" class="previewmediawrapper">
+                    
+                    <!--
+                        <ul>
+                            <li>
+                                <div style="width: 100%; height: 100%; background: #B4CDDA;"></div>
+                            </li>
+                            <li>
+                                <div style="width: 100%; height: 100%; background: #B4CDDA;"></div>
+                            </li>
+                            <li>
+                                <div style="width: 100%; height: 100%; background: #B4CDDA;"></div>
+                            </li>
+                            <li>
+                                <div style="width: 100%; height: 100%; background: #B4CDDA;"></div>
+                            </li>
+                            <li>
+                                <div style="width: 100%; height: 100%; background: #B4CDDA;"></div>
+                            </li>
+                        </ul>
+                    -->
+                        <script>
+                            $('div.previewmediawrapper ul').roundabout();
+                        </script>
+                    
+                    </div>
+
+                    <div id="postpreview" class="postpreview"></div>
+
+                    <!--<div id="blogpostdialog">
+                        <div id="blogpostwrapper" class="blogpostwrapper">
+                            <div id="wmd-preview" class="postcontent"></div>
+                            <div id="mediawrapper" class="mediawrapper"></div>
+                        </div>
+                    </div>-->
+
                 </div>
 
                 <div id="diveditor" class="tabcontents">
- 
+
                     <div id="blogeditor" class="textentrywrapper">
-                        <div id="wmd-button-bar"></div>		
+                        <div id="wmd-button-bar"></div>
                         <div id="textareawrapper" style="height: 100%;">
                             <textarea class="wmd-input" id="wmd-input"></textarea>
                         </div>
+                        <div style="margin-top: 10px;">
+                            <button onclick="post();">Post</button>
+                        </div>
                     </div>
 
+                    <div id="availablemediawrapper" class="availablemediawrapper">
+                        <div id="picturescontainer" class="picturescontainer"></div></br>
+                        <div id="videoscontainer" class="videoscontainer">
+                            <div id="video-container"></div>
+                        </div></br>
+                        <div id="tweetscontainer" class="tweetscontainer"></div></br>
+                    </div>
+ 
                  </div>
 
             </div>
@@ -50,6 +98,8 @@
     </div>
 
     <script>
+
+        var previewdata = {};
 
         var tabs = ['editor','preview'];
         var currenttab = '';
@@ -81,8 +131,13 @@
                 for (i=0; i<tabs.length; i++)
                     $("#div"+tabs[i]).hide();
         
+                if ( clickedtab == 'preview' ) {
+                    doPreview();
+                }
+
                 // show the new current tab
                 $("#div"+clickedtab).show();
+
             }
         }
 
@@ -92,7 +147,7 @@
 
         $(document).ready(function() {
 
-           // do this when the page is ready
+
 
         });
 
@@ -166,8 +221,10 @@
             }
 
          function showPreview(source) {
-             var html = '<img src="' + source + '" style="width: 256px; height: 256px;"></img>';
-             html += '<div style="padding-top: 20px;"><button style="float: left;" onclick="insertImage(\'' + source + '\')")>Insert</button><button style="float: right;">Cancel</button></div>';
+             var html = '<img src="' + source + '" style="width: 100%; height: 80%;"></img>';
+             html += '<div style="margin-top: 10px;">Title:<input type="text" id="imagetitle" style="width:100%;"></input></div>';
+             html += '<div style="padding-top: 20px;"><button style="float: left;" onclick="insertImage(\'' + source + '\')")>Insert</button>';
+             html += '<button style="float: right;" onclick="function() { $(\'#imagepreview\').dialog(\'close\'); }">Cancel</button></div>';
              $('#imagepreview').html(html);
              $('#imagepreview').dialog({dialogClass: 'noTitleStuff' });
          }
@@ -178,11 +235,12 @@
 
          function insertImage(source) {
          
+             var title = $('#imagetitle').val();
              pos = getCaretPosition( document.getElementById('wmd-input') );
 
              console.log('inserting image at ' + pos);
 
-             var tag = ":::" + source + ":::";
+             var tag = '[:::' + title + '](' + source + ')';
              var newval = $('#wmd-input').val().splice( pos, 0, tag );
              $('#wmd-input').val(newval);
              console.log(newval);
@@ -190,10 +248,34 @@
              $('#imagepreview').dialog('close');
 
          } 
+
+         function post() {
+             
+             
+ 
+         }
+
+         function doPreview() {
+        
+             previewdata.text = $('#wmd-input').val();
+ 
+             text = previewdata.text;
+
+             updateText(text,'postpreview');
+         
+         }
+
+         function updateText(text,divname) {
+            // display markdown text
+            var converter = new Markdown.Converter();
+            var html = converter.makeHtml(text);
+            $('#'+divname).html(html);
+        } 
  
          loadEditor();
          images = getImages('bwrubin','5998997508291210529');
 
+         
 
     </script>
 

@@ -87,54 +87,42 @@ div.mediablockcontainer {
     background: #FDFDFD;
 }
 
-ul.mediablock {
-    background: #B4CDDA;
+div.mediablock {
+    background: red;
     left: 50%;
     top: 50%;
     width: 200px;
     height: 200px;
 }
 
-.interact {
-	border-top: 1px solid #ccc;
-	margin-top: 3em;
-	margin-bottom: 4em;
-	padding-top: 1.5em;
-	text-align: center;
+div.previewmediawrapper {
+    float: right;
+    width: 45%;
 }
 
-.interact a {
-	background-color: #2179b6;
-	border-bottom: 1px solid #084d7d;
-	color: #eee;
-	font-family: "Lucida Grande", "Lucida Sans Unicode", "Helvetica Neue", Arial, sans-serif;
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	-ms-border-radius: 8px;
-	-o-border-radius: 8px;
-	border-radius: 8px;
-	text-decoration: none;
-	padding: 8px 14px;
-	margin: 0 1em;
+div.previewmediawrapper ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 42em;
+    height: 24em;
 }
 
-.interact p {
-	font-style: italic;
-	color: #666;
+div.previewmediawrapper li {
+    height: 20em;
+    width: 30em;
+    background-color: #B4CDDA;
+    text-align: center;
+    cursor: pointer;
 }
 
-.return {
-	font-size: 1.5em;
-	text-align: center;
+div.previewmediawrapper li.roundabout-in-focus {
+    cursor: default;
 }
 
-.return a {
-	color: #2179b6;
-	text-decoration: none;
-}
-
-.return a:hover {
-	text-decoration: underline;
+div.previewmediawrapper li span {
+    display: block;
+    padding-top: 6em;
 }
 
 /* editor functions*/
@@ -178,19 +166,20 @@ div.imagewrapper:hover {
 }
 
 div.availablemediawrapper {
-   /*float: right; */
+    position: relative;
+    /*margin-top: 35px;*/
+    /*width: 45%;*/
+    /*float: right;*/
 }
 
 div.picturescontainer {
     padding: 10px 10px 10px 10px;
-    /*background: #b4cdda;*/
-    /*width: 310px;*/
     width: 32%;
     height: 260px;
     border: 1px solid #555588;
     float: right;
-    overflow-y: scroll;    
-   
+    overflow-y: scroll;
+    /*clear: both;*/
 }
 
 div.videoscontainer {
@@ -200,6 +189,8 @@ div.videoscontainer {
     border: 1px solid #555588;
     float: right;
     overflow-y: scroll;
+    /*clear: both;*/
+    margin-top: 15px;
 }
 
 div.tweetscontainer {
@@ -209,6 +200,8 @@ div.tweetscontainer {
     border: 1px solid #555588;
     float: right;
     overflow-y: scroll;
+    /*clear: both;*/
+    margin-top: 15px;
 }
 
 div.textentrywrapper {
@@ -264,7 +257,7 @@ div.textentrywrapper {
 .menucontainer {
     width: 60%;
     height: 30px;
-    margin-top: 5px;
+    margin-top: 55px;
     float: left;
     border-bottom: 1px solid #444444;
     margin-bottom: 5px;
@@ -325,3 +318,9 @@ div.tabcontents {
     height: 100%;
 }
 
+div.postpreview {
+    padding: 5px 5px 5px 5px;
+    margin-top: 5px;
+    float: left;
+    width: 50%;
+}
