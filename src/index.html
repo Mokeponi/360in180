@@ -119,11 +119,16 @@
             var url ="getpost.json"; //?postid=" + postid
             $.getJSON( url, function( data ) {
              
+                // display markdown text
                 var converter = new Markdown.Converter();
                 var html = converter.makeHtml(data.text);
-
                 $('#textwrapper').html(html);
-               
+             
+                medias = [];
+                for(var i=0;i<data.media.length;i++) {
+                    medias[
+                }
+  
                 $('#blogpostdialog' ).dialog( 'open' ); 
 
             });
