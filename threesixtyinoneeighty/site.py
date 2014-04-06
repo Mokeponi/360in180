@@ -19,3 +19,7 @@ mako = MakoTemplates(app)
 @app.route('/')
 def index():
     return render_template('index.html', name='mako')
+
+@app.route('/new')
+def new():
+    return render_template('editor.html', name='mako')

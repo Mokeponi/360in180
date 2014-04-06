@@ -48,3 +48,173 @@ div.footer {
     height: 10%;
     background-color: #DDDDDD;
 }
+
+/* roundabout stuff */
+
+div.mediablockcontainer {
+    margin: auto;
+    width: 100%;
+    height: 400px;
+    background: #FDFDFD;
+}
+
+ul.mediablock {
+    background: #B4CDDA;
+    left: 50%;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.interact {
+	border-top: 1px solid #ccc;
+	margin-top: 3em;
+	margin-bottom: 4em;
+	padding-top: 1.5em;
+	text-align: center;
+}
+
+.interact a {
+	background-color: #2179b6;
+	border-bottom: 1px solid #084d7d;
+	color: #eee;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Helvetica Neue", Arial, sans-serif;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+	border-radius: 8px;
+	text-decoration: none;
+	padding: 8px 14px;
+	margin: 0 1em;
+}
+
+.interact p {
+	font-style: italic;
+	color: #666;
+}
+
+.return {
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.return a {
+	color: #2179b6;
+	text-decoration: none;
+}
+
+.return a:hover {
+	text-decoration: underline;
+}
+
+/* editor functions*/
+
+div.tab {
+    background-color: #b4cdda; 
+    width: 45px;
+    height: 25px;
+    color: #FFFFFF;
+}
+
+div.tab:hover {
+    background-color: #94adba; 
+}
+
+div.editorbackground {
+    background: #BBBBBB;
+    height: 100%;
+    width: 100%;
+    padding-top: 25px;
+}
+
+div.editortop {
+    width: 80%;
+    margin: auto;
+    background-color: #FEFEFE;
+    height: 90%;
+    padding: 15px 15px 15px 15px;
+}
+
+img.imagepreview {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+div.imagewrapper {
+    width: 300px;
+    border: 1px solid #888888;
+    background: #DDDDEE;
+    margin-top: 5px;
+}
+
+div.imagewrapper:hover {
+    background: #94adba
+}
+
+div.availablemediawrapper {
+   float: right; 
+}
+
+div.picturescontainer {
+    padding: 10px 10px 10px 10px;
+    background: #b4cdda;
+    width: 310px;
+}
+
+div.videoscontainer {
+    float: right;
+}
+
+div.textentrywrapper {
+    width: 60%;
+    float: left;
+}
+
+#wmd-input {
+    /*width: 95%;*/
+    width: 100%;
+    height: 350px;
+}
+
+#blogeditor li {
+    float: left;
+}
+
+#wmd-preview {
+    background: #FDFDFD;
+    padding: 10px 10px 10px 10px;
+    height: 350px;
+    border: 1px solid #888888;
+    width: 60%;
+}
+
+.wmd-button > span {
+	background-image: url(/media/wmd-buttons.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	left: 0px;
+}
+
+.wmd-button {
+	list-style: none;
+	cursor: pointer;
+}
+
+.wmd-button-row {
+	position: relative;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	padding: 0px;
+	height: 20px;
+}
+
+
