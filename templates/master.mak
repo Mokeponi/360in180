@@ -48,11 +48,12 @@
                       <a class="navbar-brand" href="#">360 in 180</a>
                     </div>
                     <div class="collapse navbar-collapse">
-						<p class="navbar-text">
-% if not twiter_user:
-                      <a href="/login"><img src="/img/sign-in-with-twitter-gray.png"/></a>
+% if not twitter_user:
+						<p class="navbar-text" id="twitter-login-icon">
+	<a href="/login"><img src="/img/sign-in-with-twitter-gray.png"/></a>
 % else:
-						Hello, ${t_user}! (logout)
+						<p class="navbar-text">
+						Hello, ${twitter_user}! (logout)
 % endif
 						</p>
                     </div>

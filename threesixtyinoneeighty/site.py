@@ -21,7 +21,7 @@ mako = MakoTemplates(app)
 @app.route('/')
 def index():
     return render_template('index.html', name='mako',
-        twitter_user=session['twitter_user']
+        twitter_user=session['twitter_user'] if 'twitter_user' in session else None
     )
 
 @app.route('/new')

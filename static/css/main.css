@@ -4,8 +4,9 @@ body,html {
     overflow: hidden;
 }
 
-.navbar-brand {
-    padding: 18px 15px;
+#twitter-login-icon{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 
