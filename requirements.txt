@@ -1,5 +1,6 @@
 Flask
 Flask-Mako
+Flask-OAuth
 Jinja2
 Mako
 MarkupSafe
