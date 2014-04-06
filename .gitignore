@@ -5,3 +5,4 @@
 *.sqlite
 *.swp
 setenv.sh
+*.db

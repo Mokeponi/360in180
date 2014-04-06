@@ -51,12 +51,9 @@
                       <a class="navbar-brand" href="#">360 in 180</a>
                     </div>
                     <div class="collapse navbar-collapse">
-% if not twitter_user:
-						<p class="navbar-text" id="twitter-login-icon">
-	<a href="/login"><img src="/img/sign-in-with-twitter-gray.png"/></a>
-% else:
 						<p class="navbar-text">
-						Hello, ${twitter_user}! (<a href="/logout">logout</a>)
+% if user.is_authenticated():
+						Hello, ${user.username}! (<a href="/logout">logout</a>)
 % endif
 						</p>
                     </div>

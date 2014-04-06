@@ -1,5 +1,6 @@
 from flask_oauth import OAuth
 from flask import session
+import flask.ext.login
 import os
 
 class TwitterOAuth (object):
@@ -18,7 +19,6 @@ class TwitterOAuth (object):
             consumer_key=twitter_key,
             consumer_secret=twitter_secret
         )
-        self.twitter_auth.tokengetter(self.tokengetter)
 
     def __get_auth_keys(self):
         twitter_key = None
@@ -41,9 +41,3 @@ class TwitterOAuth (object):
             raise Exception("You must define twitter API credentials.")
 
         return (twitter_key, twitter_secret)
-
-
-    def tokengetter(token=None):
-        """ Junky alpha token getter.
-        """
-        return session.get('twitter_token')
