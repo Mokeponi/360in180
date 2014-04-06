@@ -68,7 +68,7 @@
             reSize();
 
             var main = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: 'Map data © OpenStreetMap contributors',
+                attribution: 'Map data  OpenStreetMap contributors',
                 minZoom: 3,
                 maxZoom: 16,
             });
@@ -114,26 +114,57 @@
            
         }
 
+        var media = [];
+        var text = '';
+
         function openPost(postid) {
 
             var url ="getpost.json"; //?postid=" + postid
             $.getJSON( url, function( data ) {
-             
-                // display markdown text
-                var converter = new Markdown.Converter();
-                var html = converter.makeHtml(data.text);
-                $('#textwrapper').html(html);
-             
-                medias = [];
-                for(var i=0;i<data.media.length;i++) {
-                    medias[
-                }
-  
+
+                text = data.text;             
+                updateText();            
+ 
+                medias = data.media;
+                updateMedia() 
+ 
                 $('#blogpostdialog' ).dialog( 'open' ); 
 
             });
-            
         } 
+
+        function updateText() {
+            // display markdown text
+            var converter = new Markdown.Converter();
+            var html = converter.makeHtml(data.text);
+            $('#textwrapper').html(html);
+        } 
+
+        function updateMedia() {
+            // display media parts
+            for(var i=0; i<media.length; i++) {
+                var html = '<ul>';
+                for(var j=0; j<media[i].length; j++) {
+                    html += makeMediaBlock(media[i][j]);
+                }
+                html += '</ul>';
+            }
+        }
+
+        function makeMediaBlock(media) {
+            var html = '';
+            html += '<li class="mediablock">';
+            switch(media[i][j]['type']) {
+                case 'image':
+                    html += '<img class="mediablockimage" src="' + media['source'] + '"></a>';
+                    break;
+                default:
+                     html += '';
+                     break;
+            }
+            html += '</li>';
+            return html
+        }
     
     </script>
 
