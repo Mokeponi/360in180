@@ -1,6 +1,8 @@
 <html>
 <head>
 
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
 
     <link rel="stylesheet" href="main.css" />
@@ -43,8 +45,18 @@
 
         //$('#blogpost').show();
 
-        $( "#blogpostdialog" ).dialog();
-        
+        $( "#blogpostdialog" ).dialog({
+            autoOpen: false,
+            show: { 
+                effect: "fade",
+                duration: 300 
+            },
+            hide: { 
+                effect: "fade",
+                duration: 300 
+            }
+        });
+
         $(document).ready(function() {
 
             reSize();
@@ -76,8 +88,8 @@
             */ 
 
             var marker = L.marker([43, -77]).addTo(map);
-            
-            
+            marker.on('click', function () { openPost('testpost'); }  );
+
         });
         
         $(window).bind( 'resize', reSize() );
@@ -85,7 +97,9 @@
         function reSize() {
             
             // called when window gets resized
-            
+
+            console.log('resizing');           
+ 
             var w = window.innerWidth;
             var h = window.innerHeight;
             
@@ -93,6 +107,20 @@
             $('#blogpostdialog').dialog( "option", "height", (h * .85) );
            
         }
+
+        function openPost(postid) {
+
+            var url ="getpost.json"; //?postid=" + postid
+            $.getJSON( url, function( data ) {
+             
+               
+                $('#blogpostdialog' ).dialog( 'open' ); 
+
+            });
+            
+
+            //$('#blogpostdialog' ).dialog( 'open' );
+        } 
 
     
     </script>
