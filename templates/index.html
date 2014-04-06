@@ -1,36 +1,7 @@
-<html>
-<head>
+<%inherit file="master.mak" />
+ 
+   <div id="map-canvas" class="map-canvas">HELLO</div>
 
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
-
-    <link rel="stylesheet" href="/css/main.css" />
-    
-    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
-    
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-    <script src="/js/jquery.roundabout.js"></script>
-
-    <script src="/js/markdown.converter.js"></script>
-    <!--
-    <script src="js/markdown.sanitizer.js"></script>
-    <script src="js/markdown.editor.js"></script>
-    -->
-
-</head>
-<body>
-
-    
-    <div id="header" class="header"></div>
-
-    <div id="map-canvas" class="map-canvas" ></div>
-
-    <div id="footer" class="header"></div>
-    
     <div id="blogpostdialog">
         <div id="blogpostwrapper" class="blogpostwrapper">
             <div id="textwrapper" class="textwrapper"></div>
@@ -39,7 +10,6 @@
     </div>
 
     <script>
-    
         var map_container = document.getElementById('map-canvas');
         var counties = null;
         var current_towns = null;
@@ -184,8 +154,4 @@
             html += '</li>';
             return html
         }
-    
     </script>
-
-</body>
-</html>
