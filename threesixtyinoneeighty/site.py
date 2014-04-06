@@ -19,7 +19,6 @@ login_manager = LoginManager()
 app = Flask(__name__, static_folder='../static', static_url_path='')
 app.template_folder = "../templates"
 app.config['MAKO_TRANSLATE_EXCEPTIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./test.db'
 db = SQLAlchemy(app)
 login_manager.init_app(app)
 mako = MakoTemplates(app)
