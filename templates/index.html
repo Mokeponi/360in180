@@ -1,6 +1,5 @@
 <%inherit file="master.mak" />
- 
-   <div id="map-canvas" class="map-canvas">HELLO</div>
+        <div id="map-canvas" class="map-canvas"></div>
 
     <div id="blogpostdialog">
         <div id="blogpostwrapper" class="blogpostwrapper">
@@ -35,7 +34,6 @@
         });
 
         $(document).ready(function() {
-
             reSize();
 
             var main = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -47,7 +45,6 @@
             var counties = L.layerGroup();
             var current_towns = L.layerGroup();
 
-            
             window.map = L.map('map-canvas', {
                 center: [20, 0], //[42.6501, -76.3659],
                 zoom: 3,
