@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>360in180</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+
     <!-- Sets initial viewport load and disables zooming  -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <script type="text/javascript" src="/js/site.min.js"></script>

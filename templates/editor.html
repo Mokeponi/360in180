@@ -1,16 +1,7 @@
-<html>
-<head>
+<%inherit file="master.mak" />
 
-    <link rel="stylesheet" href="css/main.css" />
-
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-
-    <script src="/js/markdown.converter.js"></script>
     <script src="/js/markdown.sanitizer.js"></script>
     <script src="/js/markdown.editor.js"></script>
-
-</head>
-<body>
 
     <div class="editorbackground">
         <div class="editortop">
@@ -20,18 +11,37 @@
                 <div id="videoscontainer" class="videoscontainer"></div>
             </div>
 
-            <div id='previewtab' class="tabcontents">
+            <div id="imagepreview"></div>
 
-                <div id="wmd-preview" class="postcontent"></div> 
-    
+            <div class="menucontainer">
+                <ul class="menutabs">
+                    <li id="tabeditor" class="menutab" onclick="showtab('editor')">
+                        Editor
+                    </li>
+                    <li id="tabpreview" class="menutab" onclick="showtab('preview')">
+                        Preview
+                    </li>
+                </ul>
             </div>
 
-            <div id="entrytab" class="tabcontents">
+            <div id="tabs" class="tabscontainer">
 
-                <div id="blogeditor" class="textentrywrapper">
-                    <div id="wmd-button-bar"></div>		
-                    <textarea class="wmd-input" id="wmd-input"></textarea>
-               </div>
+                <div id="divpreview" class="tabcontents">
+  
+                    <div id="wmd-preview" class="postcontent"></div> 
+    
+                </div>
+
+                <div id="diveditor" class="tabcontents">
+ 
+                    <div id="blogeditor" class="textentrywrapper">
+                        <div id="wmd-button-bar"></div>		
+                        <div id="textareawrapper" style="height: 100%;">
+                            <textarea class="wmd-input" id="wmd-input"></textarea>
+                        </div>
+                    </div>
+
+                 </div>
 
             </div>
 
@@ -40,6 +50,51 @@
     </div>
 
     <script>
+
+        var tabs = ['editor','preview'];
+        var currenttab = '';
+
+        function hidetabs() {
+        
+            for( var i=0; i<tabs.length; i++ ) {
+                //$('#tab'+tabs[i]).hide();
+                $('#div'+tabs[i]).hide();
+            }
+ 
+        }
+
+        function showtab(clickedtab) {
+
+            console.log(clickedtab + ' has been clicked');
+            console.log(currenttab + ' is the current tab');
+
+            if( currenttab != clickedtab ) {
+
+                // update display
+                $("#tab"+currenttab).removeClass("menutab-selected").addClass("menutab");
+                $("#tab"+clickedtab).removeClass("menutab").addClass("menutab-selected");
+                
+                // update our state
+                currenttab = clickedtab
+        
+                // hide all of the tabs
+                for (i=0; i<tabs.length; i++)
+                    $("#div"+tabs[i]).hide();
+        
+                // show the new current tab
+                $("#div"+clickedtab).show();
+            }
+        }
+
+        hidetabs();
+        showtab('editor');
+        //currenttab = 'editor';
+
+        $(document).ready(function() {
+
+           // do this when the page is ready
+
+        });
 
         function loadEditor()
         {
@@ -65,23 +120,80 @@
                 //console.log(pictureurls);
                 var html = '';
                 for( var i=0; i<pictureurls.length; i++ ) {
-                    html += '<div class="imagewrapper">';
-                    html += '<img class="imagepreview" src="' + pictureurls[i]['content']['src'] + '">' + pictureurls[i]['summary']['$t'] + '</img>';
-                    html += '</div>'
+                    //html += '<div class="imagewrapper">';
+                    var src = pictureurls[i]['content']['src'];
+                    html += '<img class="imagepreview" src="' + src+ '" onclick="showPreview(\'' + src + '\');"></img>';
+                    //html += '</div>'
                 }
                 html += '';
 
                 $('#picturescontainer').html(html);
 
+                var totalpictures = $('#content img').size();
+
+                $('#picturescontainer').show();
+
+                /*
+                $(window).bind('resize', function() {
+                    var $picture = $('#wrapper').find('img');
+                    resize($picture);
+                });
+                */
+
              });
 
          }     
 
+            function getCaretPosition( textarea ) {
+                if ( textarea.selectionStart ) {
+                    return textarea.selectionStart;
+                }
+                else if ( !document.selection ) {
+                    return 0;
+                }
+
+                var c   = "\001",
+                    sel = document.selection.createRange(),
+                    dul = sel.duplicate(),
+                    len = 0;
+
+                dul.moveToElementText( textarea );
+                sel.text  = c;
+                len = dul.text.indexOf( c );
+                sel.moveStart( 'character', -1 );
+                sel.text  = "";
+                return len;
+            }
+
+         function showPreview(source) {
+             var html = '<img src="' + source + '" style="width: 256px; height: 256px;"></img>';
+             html += '<div style="padding-top: 20px;"><button style="float: left;" onclick="insertImage(\'' + source + '\')")>Insert</button><button style="float: right;">Cancel</button></div>';
+             $('#imagepreview').html(html);
+             $('#imagepreview').dialog({dialogClass: 'noTitleStuff' });
+         }
+
+         String.prototype.splice = function( idx, rem, s ) {
+             return (this.slice(0,idx) + s + this.slice(idx + Math.abs(rem)));
+         };
+
+         function insertImage(source) {
+         
+             pos = getCaretPosition( document.getElementById('wmd-input') );
+
+             console.log('inserting image at ' + pos);
+
+             var tag = ":::" + source + ":::";
+             var newval = $('#wmd-input').val().splice( pos, 0, tag );
+             $('#wmd-input').val(newval);
+             console.log(newval);
+
+             $('#imagepreview').dialog('close');
+
+         } 
+ 
          loadEditor();
          images = getImages('bwrubin','5998997508291210529');
 
 
     </script>
 
-</body>
-</html>
