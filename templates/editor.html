@@ -5,25 +5,43 @@
 
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
-    <script src="js/Markdown.Converter.js"></script>
-    <script src="js/Markdown.Sanitizer.js"></script>
-    <script src="js/Markdown.Editor.js"></script>
+    <script src="/js/markdown.converter.js"></script>
+    <script src="/js/markdown.sanitizer.js"></script>
+    <script src="/js/markdown.editor.js"></script>
 
 </head>
 <body>
 
-    <div>
+    <div class="editorbackground">
+        <div class="editortop">
 
-        <div id="blogeditor">
-            <div id="wmd-button-bar"></div>		
-            <textarea class="wmd-input" id="wmd-input"></textarea>
+            <div id="availablemediawrapper" class="availablemediawrapper">
+                <div id="picturescontainer" class="picturescontainer"></div>
+                <div id="videoscontainer" class="videoscontainer"></div>
+            </div>
+
+            <div id='previewtab' class="tabcontents">
+
+                <div id="wmd-preview" class="postcontent"></div> 
+    
+            </div>
+
+            <div id="entrytab" class="tabcontents">
+
+                <div id="blogeditor" class="textentrywrapper">
+                    <div id="wmd-button-bar"></div>		
+                    <textarea class="wmd-input" id="wmd-input"></textarea>
+               </div>
+
+            </div>
+
         </div>
 
     </div>
 
     <script>
 
-        function loadeditor()
+        function loadEditor()
         {
             var converter = Markdown.getSanitizingConverter();
                 
@@ -38,7 +56,30 @@
             editor.run();
          }
 
+         function getImages(username,albumid) {
          
+             var url = 'https://picasaweb.google.com/data/feed/api/user/' + username + '/albumid/' + albumid + '?alt=json'
+             //console.log(url);
+             $.getJSON( url, function( data ) {
+                pictureurls = data['feed']['entry'];
+                //console.log(pictureurls);
+                var html = '';
+                for( var i=0; i<pictureurls.length; i++ ) {
+                    html += '<div class="imagewrapper">';
+                    html += '<img class="imagepreview" src="' + pictureurls[i]['content']['src'] + '">' + pictureurls[i]['summary']['$t'] + '</img>';
+                    html += '</div>'
+                }
+                html += '';
+
+                $('#picturescontainer').html(html);
+
+             });
+
+         }     
+
+         loadEditor();
+         images = getImages('bwrubin','5998997508291210529');
+
 
     </script>
 

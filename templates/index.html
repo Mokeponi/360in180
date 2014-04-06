@@ -1,34 +1,6 @@
-<html>
-<head>
+<%inherit file="master.mak" />
+        <div id="map-canvas" class="map-canvas"></div>
 
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
-
-    <link rel="stylesheet" href="/css/main.css" />
-    
-    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
-    
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-    <script src="/js/markdown.converter.js"></script>
-    <!--
-    <script src="js/markdown.sanitizer.js"></script>
-    <script src="js/markdown.editor.js"></script>
-    -->
-
-</head>
-<body>
-
-    
-    <div id="header" class="header"></div>
-
-    <div id="map-canvas" class="map-canvas" ></div>
-
-    <div id="footer" class="header"></div>
-    
     <div id="blogpostdialog">
         <div id="blogpostwrapper" class="blogpostwrapper">
             <div id="textwrapper" class="textwrapper"></div>
@@ -37,7 +9,6 @@
     </div>
 
     <script>
-    
         var map_container = document.getElementById('map-canvas');
         var counties = null;
         var current_towns = null;
@@ -63,7 +34,6 @@
         });
 
         $(document).ready(function() {
-
             reSize();
 
             var main = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -75,7 +45,6 @@
             var counties = L.layerGroup();
             var current_towns = L.layerGroup();
 
-            
             window.map = L.map('map-canvas', {
                 center: [20, 0], //[42.6501, -76.3659],
                 zoom: 3,
@@ -118,16 +87,18 @@
 
         function openPost(postid) {
 
-            console.log('');
+            console.log('getting post ...');
 
-            var url ="getpost.json"; //?postid=" + postid
+            var url ="/getpost.json"; //?postid=" + postid
             $.getJSON( url, function( data ) {
 
-                //var text = data.text;             
-                //updateText(text);
+                console.log('post gotten')
+
+                var text = data.text;             
+                updateText(text);
  
-                //var media = data.media;
-                //updateMedia(media)
+                var media = data.media;
+                updateMedia(media)
  
                 $('#blogpostdialog' ).dialog( 'open' ); 
 
@@ -142,22 +113,36 @@
         } 
 
         function updateMedia(media) {
+
+            console.log(media)
+
             // display media parts
             for(var i=0; i<media.length; i++) {
-                var html = '<ul>';
+                var html = '';
+                html += '<div class="mediablockcontainer">';
+                html += '<ul class="mediablock" id="mediablock' + i + '">';
                 for(var j=0; j<media[i].length; j++) {
                     html += makeMediaBlock(media[i][j]);
                 }
                 html += '</ul>';
+                html += '</div>';
+            }
+
+            $('#mediawrapper').html(html);
+
+            // make roundabout
+            for(var i=0; i<media.length; i++) {
+                $('#mediablock' + i + '').roundabout();
+                console.log('made roundabout');
             }
         }
 
         function makeMediaBlock(media) {
             var html = '';
             html += '<li class="mediablock">';
-            switch(media[i][j]['type']) {
+            switch(media['type']) {
                 case 'image':
-                    html += '<img class="mediablockimage" src="' + media['source'] + '"></a>';
+                    //html += '<img class="mediablockimage" src="' + media['source'] + '"></a>';
                     break;
                 default:
                      html += '';
@@ -166,8 +151,4 @@
             html += '</li>';
             return html
         }
-    
     </script>
-
-</body>
-</html>
