@@ -48,10 +48,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                       </button>
-                      <a class="navbar-brand" href="#">Bootflat</a>
+                      <a class="navbar-brand" href="#">360 in 180</a>
                     </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
-                      <button type="button" class="btn btn-danger navbar-btn">Sign in</button>
+                    <div class="collapse navbar-collapse">
+						<p class="navbar-text">
+% if user.is_authenticated():
+						Hello, ${user.username}! (<a href="/logout">logout</a>)
+% endif
+						</p>
                     </div>
                   </div>
                 </nav>
