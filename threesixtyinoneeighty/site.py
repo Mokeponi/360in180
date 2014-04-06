@@ -6,7 +6,7 @@ from __future__ import division
 import os
 import threading
 
-from flask import Flask, url_for, request
+from flask import Flask, url_for, request, session, flash, redirect
 from flask.ext.mako import MakoTemplates, render_template
 from .twitter import TwitterOAuth
 twitter = TwitterOAuth()
@@ -20,7 +20,9 @@ mako = MakoTemplates(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html', name='mako')
+    return render_template('index.html', name='mako',
+        twitter_user=session['twitter_user']
+    )
 
 @app.route('/new')
 def new():

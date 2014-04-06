@@ -45,10 +45,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                       </button>
-                      <a class="navbar-brand" href="#">Bootflat</a>
+                      <a class="navbar-brand" href="#">360 in 180</a>
                     </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
-                      <a href="/login" type="button" class="btn btn-danger navbar-btn">Sign in</a>
+                    <div class="collapse navbar-collapse">
+						<p class="navbar-text">
+% if not twiter_user:
+                      <a href="/login"><img src="/img/sign-in-with-twitter-gray.png"/></a>
+% else:
+						Hello, ${t_user}! (logout)
+% endif
+						</p>
                     </div>
                   </div>
                 </nav>

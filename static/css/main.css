@@ -4,6 +4,11 @@ body,html {
     overflow: hidden;
 }
 
+.navbar-brand {
+    padding: 18px 15px;
+}
+
+
 #fill-container {
     bottom: 0;
     min-height: 100%;

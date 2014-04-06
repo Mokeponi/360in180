@@ -1,8 +1,6 @@
 from flask_oauth import OAuth
+from flask import session
 import os
-
-
-
 
 class TwitterOAuth (object):
     oauth = None
@@ -48,9 +46,4 @@ class TwitterOAuth (object):
     def tokengetter(token=None):
         """ Junky alpha token getter.
         """
-        token = None
-        if os.path.isfile("twittertoken.txt"):
-            with open("twittertoken.txt") as fp:
-                token = tuple([x for x in fp])
-
-        return token
+        return session.get('twitter_token')
