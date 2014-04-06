@@ -7,14 +7,10 @@
 
     <script src="/js/jquery.roundabout.js"></script>
 
-    <script src="/js/gauth.js"></script>
-    <script src="/js/youtube.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-
     <div class="editorbackground">
         <div class="editortop">
 
-            <div id="imagepreview"></div>
+            <div id="mediapreview"></div>
 
             <div class="menucontainer">
                 <ul class="menutabs">
@@ -177,7 +173,7 @@
                 for( var i=0; i<pictureurls.length; i++ ) {
                     //html += '<div class="imagewrapper">';
                     var src = pictureurls[i]['content']['src'];
-                    html += '<img class="imagepreview" src="' + src+ '" onclick="showPreview(\'' + src + '\');"></img>';
+                    html += '<img class="imagepreview" src="' + src+ '" onclick="showPreview(\'image\', \'' + src + '\');"></img>';
                     //html += '</div>'
                 }
                 html += '';
@@ -220,13 +216,28 @@
                 return len;
             }
 
-         function showPreview(source) {
-             var html = '<img src="' + source + '" style="width: 100%; height: 80%;"></img>';
+         function showPreview(type,source) {
+
+             console.log('showing preview ...');
+
+             var html = '';
+             switch(type) {
+
+                 case 'image':
+                     html += '<img src="' + source + '" style="width: 100%; height: 80%;"></img>';
+                     break;
+
+                 case 'video':
+                     html += '<iframe src="http://www.youtube.com/embed/"' + source + '" style="width: 100%; height: 80%;" frameborder="0" allowfullscreen"></iframe>';
+                     break;
+             };
+
              html += '<div style="margin-top: 10px;">Title:<input type="text" id="imagetitle" style="width:100%;"></input></div>';
              html += '<div style="padding-top: 20px;"><button style="float: left;" onclick="insertImage(\'' + source + '\')")>Insert</button>';
-             html += '<button style="float: right;" onclick="function() { $(\'#imagepreview\').dialog(\'close\'); }">Cancel</button></div>';
-             $('#imagepreview').html(html);
-             $('#imagepreview').dialog({dialogClass: 'noTitleStuff' });
+             html += '<button style="float: right;" onclick="function() { $(\'#mediapreview\').dialog(\'close\'); }">Cancel</button></div>';
+             $('#mediapreview').html(html);
+             $('#mediapreview').dialog({dialogClass: 'noTitleStuff' });
+
          }
 
          String.prototype.splice = function( idx, rem, s ) {
@@ -245,9 +256,15 @@
              $('#wmd-input').val(newval);
              console.log(newval);
 
-             $('#imagepreview').dialog('close');
+             $('#mediapreview').dialog('close');
 
          } 
+
+         function insertVideo(videoid) {
+         
+             
+
+         }
 
          function post() {
              
@@ -279,3 +296,7 @@
 
     </script>
 
+
+    <script src="/js/gauth.js"></script>
+    <script src="/js/youtube.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>

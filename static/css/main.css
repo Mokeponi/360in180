@@ -138,8 +138,10 @@ div.editorbackground {
     height: 100%;
     width: 100%;
     padding-top: 25px;*/
+
+    /*overflow-y: scroll;*/
+    height: 850px;
     
-    height: 800px;
 }
 
 div.editortop {
@@ -176,6 +178,7 @@ div.availablemediawrapper {
     /*margin-top: 35px;*/
     /*width: 45%;*/
     /*float: right;*/
+    height: 0px;
 }
 
 div.picturescontainer {
@@ -263,7 +266,7 @@ div.textentrywrapper {
 .menucontainer {
     width: 60%;
     height: 30px;
-    margin-top: 55px;
+    margin-top: 15px;
     float: left;
     border-bottom: 1px solid #444444;
     margin-bottom: 5px;

@@ -53,11 +53,19 @@ function requestVideoPlaylist(playlistId, pageToken) {
   });
 }
 
+String.prototype.trunc = String.prototype.trunc ||
+    function(n){
+        return this.length>n ? this.substr(0,n-1)+'&hellip;' : this;
+    };
+
 // Create a listing for a video.
 function displayResult(videoSnippet) {
+  console.log(videoSnippet);
+  var thumburl = videoSnippet.thumbnails.default.url;
   var title = videoSnippet.title;
+  title = title.trunc(35);
   var videoId = videoSnippet.resourceId.videoId;
-  $('#video-container').append('<p>' + title + ' - ' + videoId + '</p>');
+  $('#video-container').append('<img style="margin-top:10px; margin-bottom: 10px; margin-left: 10px; " src="' + thumburl + '" onclick="showPreview(\'video\',\'' + videoId + '\')"></img>');
 }
 
 // Retrieve the next page of videos in the playlist.
