@@ -1,0 +1,8 @@
+Flask
+Flask-Mako
+Jinja2
+Mako
+MarkupSafe
+Werkzeug
+itsdangerous
+wsgiref
