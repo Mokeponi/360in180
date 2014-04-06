@@ -9,8 +9,8 @@
     <!-- Sets initial viewport load and disables zooming  -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <script type="text/javascript" src="/js/site.min.js"></script>
-    <link rel="shortcut icon" href="favicon_16.ico"/>
-    <link rel="bookmark" href="favicon_16.ico"/> 
+    <link rel="shortcut icon" href="/img/favicon.png"/>
+    <link rel="bookmark" href="/img/favicon.png"/>
     <!-- site css -->
     <link rel="stylesheet" href="/css/site.min.css">
     <link rel="stylesheet" href="/css/main.css" />
