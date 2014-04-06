@@ -114,33 +114,33 @@
            
         }
 
-        var media = [];
-        var text = '';
+        //var media = [];
+        //var text = '';
 
         function openPost(postid) {
 
             var url ="getpost.json"; //?postid=" + postid
             $.getJSON( url, function( data ) {
 
-                text = data.text;             
-                updateText();            
+                var text = data.text;             
+                updateText(text);
  
-                medias = data.media;
-                updateMedia() 
+                var media = data.media;
+                updateMedia(media)
  
                 $('#blogpostdialog' ).dialog( 'open' ); 
 
             });
         } 
 
-        function updateText() {
+        function updateText(text) {
             // display markdown text
             var converter = new Markdown.Converter();
-            var html = converter.makeHtml(data.text);
+            var html = converter.makeHtml(text);
             $('#textwrapper').html(html);
         } 
 
-        function updateMedia() {
+        function updateMedia(media) {
             // display media parts
             for(var i=0; i<media.length; i++) {
                 var html = '<ul>';
