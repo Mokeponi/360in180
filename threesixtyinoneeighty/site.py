@@ -9,7 +9,7 @@ import threading
 from flask import Flask
 from flask.ext.mako import MakoTemplates, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../static', static_url_path='')
 app.template_folder = "../templates"
 mako = MakoTemplates(app)
 
