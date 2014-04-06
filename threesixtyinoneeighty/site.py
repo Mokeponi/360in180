@@ -33,6 +33,13 @@ def login():
     return twitter.twitter_auth.authorize(callback=url_for('oauth_authorized',
         next=request.args.get('next') or request.referrer or None))
 
+@app.route('/logout')
+def logout():
+    del session['twitter_token']
+    del session['twitter_user']
+    return redirect("/")
+
+
 @app.route('/oauth_authorized')
 @twitter.twitter_auth.authorized_handler
 def oauth_authorized(resp):

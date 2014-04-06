@@ -53,7 +53,7 @@
 	<a href="/login"><img src="/img/sign-in-with-twitter-gray.png"/></a>
 % else:
 						<p class="navbar-text">
-						Hello, ${twitter_user}! (logout)
+						Hello, ${twitter_user}! (<a href="/logout">logout</a>)
 % endif
 						</p>
                     </div>
