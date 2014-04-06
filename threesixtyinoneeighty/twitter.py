@@ -20,6 +20,7 @@ class TwitterOAuth (object):
             consumer_key=twitter_key,
             consumer_secret=twitter_secret
         )
+        self.twitter_auth.tokengetter(self.tokengetter)
 
     def __get_auth_keys(self):
         twitter_key = None
@@ -42,3 +43,14 @@ class TwitterOAuth (object):
             raise Exception("You must define twitter API credentials.")
 
         return (twitter_key, twitter_secret)
+
+
+    def tokengetter(token=None):
+        """ Junky alpha token getter.
+        """
+        token = None
+        if os.path.isfile("twittertoken.txt"):
+            with open("twittertoken.txt") as fp:
+                token = tuple([x for x in fp])
+
+        return token
