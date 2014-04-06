@@ -228,7 +228,7 @@
                      break;
 
                  case 'video':
-                     html += '<iframe src="http://www.youtube.com/embed/"' + source + '" style="width: 100%; height: 80%;" frameborder="0" allowfullscreen"></iframe>';
+                     html += '<iframe src="http://www.youtube.com/embed/"' + source + '" style="width: 80%; height: 100%;" frameborder="0" allowfullscreen"></iframe>';
                      break;
              };
 
@@ -251,10 +251,16 @@
 
              console.log('inserting image at ' + pos);
 
-             var tag = '[:::' + title + '](' + source + ')';
+             var imagenumber = media.length + 1;
+             var tag = '![' + title + '][' + imagenumber + ']';
              var newval = $('#wmd-input').val().splice( pos, 0, tag );
              $('#wmd-input').val(newval);
              console.log(newval);
+
+             var val = $('#wmd-input').val();
+             $('#wmd-input').val(val + '\n\n' + '[' + imagenumber + ']: ' + source);
+
+             media.push({ type:"image", source: source })
 
              $('#mediapreview').dialog('close');
 
@@ -266,9 +272,15 @@
 
          }
 
+         var media = []
+
          function post() {
              
-             
+             var postdata = {};
+
+             postdata.text = $('#wmd-input').val();
+
+             postdata.media = media;
  
          }
 

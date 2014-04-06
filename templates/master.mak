@@ -52,9 +52,6 @@
                     </div>
                     <div class="collapse navbar-collapse">
 						<p class="navbar-text">
-% if user.is_authenticated():
-						Hello, ${user.username}! (<a href="/logout">logout</a>)
-% endif
 						</p>
                     </div>
                   </div>

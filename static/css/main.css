@@ -55,14 +55,14 @@ div.blogpostwrapper {
 }
 
 div.textwrapper {
-    background-color: yellow;
+    /*background-color: yellow;*
     width: 49.5%;
-    height: 100%;
+    height: 100%;*/
     float: left;
 }
 
 div.mediawrapper {
-    background-color: purple;
+    /*background-color: purple;*/
     width: 49.5%;
     height: 100%;
     float: right;
