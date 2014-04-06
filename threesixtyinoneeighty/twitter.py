@@ -1,10 +1,9 @@
 from flask_oauth import OAuth
 import os
 
+
 twitter_key = None
 twitter_secret = None
-
-
 
 
 class TwitterOAuth (object):

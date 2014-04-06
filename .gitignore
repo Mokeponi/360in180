@@ -4,3 +4,4 @@
 *.pyo
 *.sqlite
 *.swp
+setenv.sh
