@@ -48,7 +48,7 @@
                       <a class="navbar-brand" href="#">Bootflat</a>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
-                      <button type="button" class="btn btn-danger navbar-btn">Sign in</button>
+                      <a href="/login" type="button" class="btn btn-danger navbar-btn">Sign in</a>
                     </div>
                   </div>
                 </nav>
