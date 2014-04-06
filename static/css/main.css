@@ -19,6 +19,7 @@ body,html {
 .navbar {
     border-radius: 0px !important;
     margin: 0px;
+    z-index: 1000;
 }
 
 div.header {
