@@ -2,8 +2,6 @@ from flask_oauth import OAuth
 import os
 
 
-twitter_key = None
-twitter_secret = None
 
 
 class TwitterOAuth (object):
@@ -13,8 +11,8 @@ class TwitterOAuth (object):
     def __init__(self, twitter_key=None, twitter_secret=None):
         self.oauth = OAuth()
         if not twitter_key or not twitter_secret:
-        twitter_key, twitter_secret =  self.__get_auth_keys()
-        self.twitter_auth = oauth.remote_app('twitter',
+            twitter_key, twitter_secret =  self.__get_auth_keys()
+        self.twitter_auth = self.oauth.remote_app('twitter',
             base_url='https://api.twitter.com/1/',
             request_token_url='https://api.twitter.com/oauth/request_token',
             access_token_url='https://api.twitter.com/oauth/access_token',
@@ -24,6 +22,8 @@ class TwitterOAuth (object):
         )
 
     def __get_auth_keys(self):
+        twitter_key = None
+        twitter_secret = None
         try: # try getting creds from ifle
             with open('twittercreds.txt') as creds:
                 c = [x for x in creds]
@@ -34,7 +34,7 @@ class TwitterOAuth (object):
 
         try:
             twitter_key = os.environ['TWITTER_ACCESS_KEY']
-            twitter_secret  os.environ['TWITTER_SECRET_KEY']
+            twitter_secret = os.environ['TWITTER_SECRET_KEY']
         except:
             pass
 

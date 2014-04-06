@@ -2,7 +2,7 @@ import unittest
 import os
 from nose.tools import eq_, raises
 
-import threesixtyinoneeighty.twitter as dut
+import threesixtyinoneeighty as dut
 
 class TestTwitter(unittest.TestCase):
     def test_envvars_good(self):
@@ -10,7 +10,8 @@ class TestTwitter(unittest.TestCase):
         os.environ['TWITTER_SECRET_KEY'] = "derpherpserp"
         duc = dut.TwitterOAuth()
 
+    @raises(Exception)
     def test_vars_bad(self):
         del os.environ['TWITTER_ACCESS_KEY']
         del os.environ['TWITTER_SECRET_KEY']
-        duc = dut.TwitterOauth()
+        duc = dut.TwitterOAuth()
