@@ -1,0 +1,44 @@
+<html>
+<head>
+
+    <link rel="stylesheet" href="css/main.css" />
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <script src="js/Markdown.Converter.js"></script>
+    <script src="js/Markdown.Sanitizer.js"></script>
+    <script src="js/Markdown.Editor.js"></script>
+
+</head>
+<body>
+
+    <div>
+
+        <div id="blogeditor">
+            <div id="wmd-button-bar"></div>		
+            <textarea class="wmd-input" id="wmd-input"></textarea>
+        </div>
+
+    </div>
+
+    <script>
+
+        function loadeditor()
+        {
+            var converter = Markdown.getSanitizingConverter();
+                
+            converter.hooks.chain("preBlockGamut", function (text, rbg) {
+                return text.replace(/^ {0,3}""" *\n((?:.*?\n)+?) {0,3}""" *$/gm, function (whole, inner) {
+                    return "<blockquote>" + rbg(inner) + "</blockquote>\n";
+                });
+            });
+			
+            var editor = new Markdown.Editor(converter);
+			
+            editor.run();
+         }
+
+    </script>
+
+</body>
+</html>
