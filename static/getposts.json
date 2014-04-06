@@ -1,25 +1,31 @@
 [
 {
-    "lat":44,
-    "lng":-77,
-    "text":"##Hello World##\n\nThis is my markdown text ... I hope it works!",
-    "media":[
-        [
-            {"type":"image","source":"http://i.imgur.com/12cYvxE.jpg"},
-            {"type":"image","source":"http://4.bp.blogspot.com/-DdSirjdoX5k/UShnGuOdIxI/AAAAAAAABdg/iEvnhUL7U-o/s1600/baby-soldier-funny22.jpg"},
-            {"type":"image","source":"http://www.opstudiohk.com/sites/default/files/food-item-prices.jpg"}
-        ]
-    ]
+"lat":42.6403,
+"lng":18.1083,
+"text":"###Franciscan Monastery###\n\nThis is inside the 14th century Franciscan Monastery, near the Pile (pe-lay) gates in the old city. They still have a working old world pharmacy founded in 1317, which you can see in the background of the drawing below.\n\n![Illustration][1]\n\nWe spent a very wet afternoon sketching here last week, but under the arches we had a great view of the inner courtyard while keeping dry. Every so often one on the grapefruits would fall off the tree in front of me and roll down to the inner cloister.\n\n[1]: http://2.bp.blogspot.com/_SfhPqaQAU1c/S6ef-_vF3eI/AAAAAAAAAsw/JbG1duD6dEw/s400/church+web.jpg",
+"media":[[
+    {"type":"image","source":"http://www.dubrovnikmap.net/wp-content/uploads/2011/01/franciscan_monastery.jpg"},
+    {"type":"image","source":"http://www.dickschmitt.com/travels/Croatia/Dubrovnik/churches/thumbnails/2009_10_16_croatia_dubrovnik_franciscan_monastery_museum_32.jpg"}
+]]
 },
 {
-    "lat":22,
-    "lng":-45,
-    "text":"##The Tech Guarden ...###\n\n ... Is not here.",
-    "media":[
-        [
-            {"type":"image","source":"https://lh6.googleusercontent.com/-jn-q_lnUQYA/U0Dq8D5VjJI/AAAAAAAALGo/O6uSgno4OeA/IMG_20140319_220046.jpg"},
-            {"type":"video","source":"http://youtube.com/embed/e1WqPWFWjwM"}
-        ]
-    ]
+"lat":44.9333,
+"lng":34.0999,
+"text":"##Russia##\n\n####Civil Activism International journalism####\n\nJournalists are finding themselves on the frontlines of Crimea's information war. Channels are blocked, reporters are attacked and cameras are seen as weapons of mass media.\n\nSince Russian troops have moved into Crimea, most Ukrainian channels have been blocked and have been replaced with Russian channels.\n\nBlack Sea TV is one of those forced off the air.\n\nIn the station's lobby, two police officers stand guard against possible attacks. Upstairs, manager Lyudmila Zhuravlyova sits in her office, a picture of the Virgin Mary hangs on the wall next to her.\n\nZhuravlyova says residents in Crimea can still access the channel through satellite and cable. However, viewership has been cut in half and some advertisers have left, putting the channel under financial stress.\n\nShe said she got a letter at the beginning of March from the broadcast provider saying that broadcasts of the channel would be stopped for reasons they could not state. She believes though that it was an order from Moscow.\n\n\"They don't want people to know the real information, to have objective news.\" she says. \"We live in an independent country… we don't live in [the] USSR any more.\"\n\nShe compares a Russian channel using Black Sea TV's frequency to a stranger living in her house and is afraid of Crimea becoming part of Russia. \"We [will] try to work but I don't know how… of course it will be really difficult for us to continue.\"\n\nWhile none of her employees have been attacked she says she does not know what may happen after the referendum.\n\n<blockquote class=\"twitter-tweet\" lang=\"en\"><p>“<a href=\"https://twitter.com/Kathygannon\">@KathyGannon</a> was shot twice and later underwent surgery. She was described as being in stable condition and talking to medical personnel&quot;</p>&mdash; Nick Schifrin (@nickschifrin) <a href=\"https://twitter.com/nickschifrin/statuses/452076999507730432\">April 4, 2014</a></blockquote><script async src=\"//platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n\nBlack Sea TV journalist Aleksander Jankowski did not want to wait around to find out.\n\nAfter seeing armed men break into the Centre of Investigative Journalism in Simferopol, he felt it was no longer safe to work as a journalist in Crimea so he fled to Kiev. \"I decided I have to go because it's not so easy to work… everyday you go between these [armed] people,\" he says. \"You don't know when these people go to your [office].\"",
+"media":[[
+    {"type":"image","source":"http://static1.businessinsider.com/image/531b9e04eab8ea4e46342141/vice-reporter-in-crimea-challenges-russian-soldiers-are-you-going-to-shoot-me.jpg"},
+    {"type":"image","source":"http://static6.businessinsider.com/image/53137f8beab8eabd632a4297/ukraine-launches-treason-case-against-navy-chief-who-surrendered-in-crimea.jpg"},
+    {"type":"image","source":"http://static3.businessinsider.com/image/53233125ecad04fe3e2bdd1f/russia-ukraine-and-crimea-asymmetric-wars.jpg"}
+]]
+},
+{
+"lat":43.0469,
+"lng":-76.1444,
+"text":"##Hack Up-State##\n\nThree friends from the Computer Science House at the Rochester Institute of technology have joined forces to find an easy way to share their media libraries amongst their house floor without wasting bandwidth.\n\nThey have been using Plex, a closed source service, but aim to build an open source application to share local video streams; built by and for the community. \n\nThey want to be in control of their privacy without relying on external services and servers. They hope to remove flash web players from their lives to keep a friendly environment across a wide array of devices.\n\n\n\n",
+"media":[[
+    {"type":"image","source":"https://lh5.googleusercontent.com/-AxnS75_4q6I/U0FprIAjn9I/AAAAAAAALKM/nEoKDVhgs0s/IMG_20140406_001624.jpg"},
+    {"type":"image","source":"https://lh6.googleusercontent.com/--p8GIubaUec/U0Fpx69N98I/AAAAAAAALKY/Qzb7XIr9r74/IMG_20140406_001605.jpg"},
+    {"type":"image","source":"https://lh5.googleusercontent.com/-PmFuX6XALGQ/U0FqotI5IEI/AAAAAAAALLg/P70mUn3-er8/IMG_20140406_105255.jpg"}
+]]
 }
 ]
