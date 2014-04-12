@@ -2,9 +2,14 @@
     <div id="map-canvas" class="map-canvas"></div>
 
     <div id="blogpostdialog">
+        <!--
+        <div class="closewrapper">
+            <div id="closedialog" class="closebutton" onclick="closeDialog();">X</div>
+        </div>
+        -->
         <div id="blogpostwrapper" class="blogpostwrapper">
             <div id="textwrapper" class="textwrapper"></div>
-            <div id="mediawrapper" class="mediawrapper"></div>
+            <!--<div id="mediawrapper" class="mediawrapper"></div>-->
         </div>
     </div>
 
@@ -36,6 +41,10 @@
                 duration: 300 
             }
         });
+
+        function closeDialog() {
+            $('#blogpostdialog').dialog('close');
+        }
 
         $(document).ready(function() {
             reSize();
@@ -98,9 +107,9 @@
             var w = window.innerWidth;
             var h = window.innerHeight;
             
-            $('#blogpostdialog').dialog( "option", "width", (w * .85) );
-            $('#blogpostdialog').dialog( "option", "height", (h * .85) );
-           
+            $('#blogpostdialog').dialog( "option", "width", (w * .75) );
+            $('#blogpostdialog').dialog( "option", "height", (h * .85) );          
+ 
         }
 
         //var media = [];
@@ -115,11 +124,13 @@
             var text = posts[postid].text;             
             updateText(text);
  
-            var media = posts[postid].media;
-            updateMedia(media)
+            //var media = posts[postid].media;
+            //updateMedia(media)
  
             $('#blogpostdialog' ).dialog( 'open' ); 
-
+            //$('.ui-dialog-titlebar').html('<div id="closedialog" class="closebutton" onclick="closeDialog();">X</div>');
+            //$('.ui-widget-header').css('background','');
+            //$('.ui-widget-header').css('border','');
         } 
 
         function updateText(text) {
@@ -144,7 +155,7 @@
                             html += '<img style="max-width: 80%;" src="' + media[i][j].source + '"></a>';
                             break;
                         case 'video':
-                            html += '<iframe src="http://www.youtube.com/embed/"' + media[i][j].source + '" style="width: 100%; height: 80%;" frameborder="0" allowfullscreen"></iframe>'
+                            html += '<iframe src="http://www.youtube.com/embed/"' + media[i][j].source + '" style="width: 100%; height: 80%;" frameborder="0" allowfullscreen"></iframe>';
                             break;
                         default:
                             break;

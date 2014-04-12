@@ -7,14 +7,20 @@
     <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 
     <!-- Sets initial viewport load and disables zooming  -->
+    <!--
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <script type="text/javascript" src="/js/site.min.js"></script>
     <link rel="shortcut icon" href="/img/favicon.png"/>
     <link rel="bookmark" href="/img/favicon.png"/>
+    --> 
     <!-- site css -->
+    <!--
     <link rel="stylesheet" href="/css/site.min.css">
+    -->
     <link rel="stylesheet" href="/css/main.css" />
+    <!--
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700,400italic,600italic,700italic,800italic,300italic" rel="stylesheet" type="text/css">
+    -->
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
     <!-- Leaflet JS -->
@@ -37,6 +43,8 @@
   </head>
 
 <body>
+
+<!--
             <div class="row">
               <div class="col-md-12">
                 <nav class="navbar navbar-inverse" role="navigation">
@@ -58,6 +66,16 @@
                 </nav>
               </div>
             </div>
+-->
+
+    <div class="topbar">
+        <div class="linkwrapper">
+            <a href="/">Blog</a>
+        </div>
+        <div class="linkwrapper">
+            <a href="/about">About</a>
+        </div>
+    </div>
 
     ${self.body()}
 

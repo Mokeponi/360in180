@@ -25,11 +25,13 @@
 
             <div id="tabs" class="tabscontainer">
 
+                <div id="divmap" class="tabcontents"></div>
+
                 <div id="divpreview" class="tabcontents">
   
-                    <div id="previewmediawrapper" class="previewmediawrapper">
+                    <!--<div id="previewmediawrapper" class="previewmediawrapper">
                     
-                    <!--
+                    
                         <ul>
                             <li>
                                 <div style="width: 100%; height: 100%; background: #B4CDDA;"></div>
@@ -47,13 +49,13 @@
                                 <div style="width: 100%; height: 100%; background: #B4CDDA;"></div>
                             </li>
                         </ul>
-                    -->
+                    
                         <script>
                             $('div.previewmediawrapper ul').roundabout();
                         </script>
                     
                     </div>
-
+                    -->
                     <div id="postpreview" class="postpreview"></div>
 
                     <!--<div id="blogpostdialog">
@@ -97,7 +99,7 @@
 
         var previewdata = {};
 
-        var tabs = ['editor','preview'];
+        var tabs = ['editor','preview','map'];
         var currenttab = '';
 
         function hidetabs() {
@@ -224,11 +226,11 @@
              switch(type) {
 
                  case 'image':
-                     html += '<img src="' + source + '" style="width: 100%; height: 80%;"></img>';
+                     html += '<div class="embeddedmedia"><img src="' + source + '" style="width: 100%; height: 80%;"></img></div>';
                      break;
 
                  case 'video':
-                     html += '<iframe src="http://www.youtube.com/embed/"' + source + '" style="width: 80%; height: 100%;" frameborder="0" allowfullscreen"></iframe>';
+                     html += '<div class="embeddedmedia"><iframe src="http://www.youtube.com/embed/"' + source + '" style="width: 80%; height: 100%;" frameborder="0" allowfullscreen"></iframe></div>';
                      break;
              };
 
@@ -237,6 +239,7 @@
              html += '<button style="float: right;" onclick="function() { $(\'#mediapreview\').dialog(\'close\'); }">Cancel</button></div>';
              $('#mediapreview').html(html);
              $('#mediapreview').dialog({dialogClass: 'noTitleStuff' });
+             $(".ui-dialog-titlebar").hide();
 
          }
 
